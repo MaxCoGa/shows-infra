@@ -40,8 +40,15 @@ jobs:
       #     echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
       #     chmod 600 ~/.ssh/known_hosts
 
+      # - name: Create inventory file
+      #   run: |
+      #     echo "[localhost]" > inventory.ini
+      #     echo "localhost ansible_connection=local" >> inventory.ini
+
       # - name: Run Ansible Playbook
       #   run: ansible-playbook -i inventory.ini playbook.yml
 
       - name: Run Ansible Playbook on localhost
-        run: ansible-playbook playbook.yml --connection=local
+        run: |
+          ansible-playbook playbook.yml --connection=local
+        working-directory: ./ansible # Assuming your Ansible content is in an 'ansible' directory
