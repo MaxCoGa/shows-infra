@@ -1,9 +1,9 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - test # Trigger on push to the main branch
+  # push:
+  #   branches:
+  #     - test # Trigger on push to the main branch
   workflow_dispatch:
   
 jobs:
@@ -37,3 +37,6 @@ jobs:
 
       # - name: Run Ansible Playbook
       #   run: ansible-playbook -i inventory.ini playbook.yml
+
+      - name: Run Ansible Playbook on localhost
+        run: ansible-playbook playbook.yml --connection=local
