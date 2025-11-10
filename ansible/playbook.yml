@@ -1,0 +1,6 @@
+---
+- name: Run a specific role
+  hosts: localhost
+  gather_facts: no
+  roles:
+    - test_role # Replace with the name of your role
