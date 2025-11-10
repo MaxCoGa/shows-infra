@@ -5,7 +5,12 @@ on:
   #   branches:
   #     - test # Trigger on push to the main branch
   workflow_dispatch:
-  
+    inputs:
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest # Use a fresh Ubuntu runner
