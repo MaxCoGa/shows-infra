@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - test # Trigger on push to the main branch
+  workflow_dispatch:
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # Use a fresh Ubuntu runner
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4 # Action to check out your code
+
+      - name: Setup Python and Install Ansible
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.9' # Specify a Python version
+      - run: pip install ansible
+
+      - name: "Print Ansible version"
+        run: ansible-playbook --version
+
+      # - name: Configure SSH (if connecting to remote hosts)
+      #   # This step is crucial for connecting to remote hosts.
+      #   # It assumes you have SSH_PRIVATE_KEY and KNOWN_HOSTS secrets configured in your repository.
+      #   # Replace 'your-target-host.com' with the actual hostname.
+      #   if: ${{ secrets.SSH_PRIVATE_KEY && secrets.KNOWN_HOSTS }}
+      #   run: |
+      #     mkdir -p ~/.ssh
+      #     echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+      #     chmod 600 ~/.ssh/id_rsa
+      #     echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+      #     chmod 600 ~/.ssh/known_hosts
+
+      # - name: Run Ansible Playbook
+      #   run: ansible-playbook -i inventory.ini playbook.yml
