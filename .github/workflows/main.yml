@@ -1,9 +1,9 @@
 name: CI
 
 on:
-  # push:
-  #   branches:
-  #     - test # Trigger on push to the main branch
+  push:
+    branches:
+      - test # Trigger on push to the main branch
   workflow_dispatch:
     inputs:
       environment:
