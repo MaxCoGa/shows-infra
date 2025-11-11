@@ -4,3 +4,6 @@
   gather_facts: no
   roles:
     - test_role # Replace with the name of your role
+  vars:
+    # You can also set a default here if not provided by --extra-vars
+    # my_variable: 'another_default'

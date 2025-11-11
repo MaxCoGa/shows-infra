@@ -18,6 +18,10 @@ on:
           - docker_restart
           - docker_log
           - docker_stat
+        my_variable:
+          description: 'A variable to pass to Ansible'
+          required: true
+          default: 'default_value'
 
 jobs:
   deploy:
@@ -58,5 +62,6 @@ jobs:
 
       - name: Run Ansible Playbook on localhost
         run: |
-          ansible-playbook playbook.yml --connection=local
+          ansible-playbook playbook.yml --connection=local \
+                --extra-vars "my_variable=${{ github.event.inputs.my_variable }}"
         working-directory: ./ansible # Assuming your Ansible content is in an 'ansible' directory

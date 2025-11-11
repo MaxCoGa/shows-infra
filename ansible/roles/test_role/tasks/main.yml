@@ -1,10 +1,7 @@
 ---
-- name: Ensure a directory exists
-  ansible.builtin.file:
-    path: /tmp/my_test_directory
-    state: directory
-    mode: '0755'
-- name: Create a test file
-  ansible.builtin.copy:
-    content: "This is a test file created by Ansible on localhost."
-    dest: /tmp/my_test_directory/test_file.txt
+- name: Debug variable from GitHub Actions
+  debug:
+    msg: "The value of my_variable is: {{ my_variable }}"
+
+- name: Use variable in a task
+  ansible.builtin.shell: echo "Deploying with variable: {{ my_variable }}"
