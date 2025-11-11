@@ -20,7 +20,7 @@ on:
           - docker_stat
         my_variable:
           description: 'A variable to pass to Ansible'
-          required: true
+          required: false
           default: 'default_value'
 
 jobs:
