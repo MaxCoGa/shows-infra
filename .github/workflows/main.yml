@@ -18,10 +18,10 @@ on:
           - docker_restart
           - docker_log
           - docker_stat
-        my_variable:
-          description: 'A variable to pass to Ansible'
-          required: false
-          default: 'default_value'
+      my_variable:
+        description: 'A variable to pass to Ansible'
+        required: false
+        default: 'default_value'
 
 jobs:
   deploy:
