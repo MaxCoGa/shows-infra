@@ -6,10 +6,18 @@ on:
   #     - test # Trigger on push to the main branch
   workflow_dispatch:
     inputs:
-      environment:
-        description: 'Environment to run tests against'
-        type: environment
+      roles:
+        description: 'Role to play'
+        type: choice
         required: false
+        options: 
+          - test_role
+          - nginx
+          - docker_stop
+          - docker_start
+          - docker_restart
+          - docker_log
+          - docker_stat
 
 jobs:
   deploy:
