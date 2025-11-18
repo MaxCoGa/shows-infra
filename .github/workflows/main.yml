@@ -23,6 +23,9 @@ on:
         required: false
         default: 'default_value'
 
+permissions:
+  contents: write
+  
 jobs:
   deploy:
     runs-on: ubuntu-latest # Use a fresh Ubuntu runner
