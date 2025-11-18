@@ -22,9 +22,6 @@ on:
         description: 'A variable to pass to Ansible'
         required: false
         default: 'default_value'
-
-permissions:
-  contents: write
   
 jobs:
   deploy:
